@@ -45,14 +45,14 @@ def main():
         pygame.Surface.fill(screen,(0,0,0))
         for item in updatable:
             item.update(dt)
-        for item in asteroids:
-            if item.collision(player):
+        for asteroid in asteroids:
+            if asteroid.collision(player):
                 print("Game over!")
                 return
             for shot in shots:
-                if shot.collision(item):
+                if shot.collision(asteroid):
                     shot.kill()
-                    item.kill()
+                    asteroid.split()
         for item in drawable:
             item.draw(screen)
         pygame.display.flip()
